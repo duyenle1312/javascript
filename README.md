@@ -54,7 +54,7 @@ If there is only **one parameter**, you could also remove the parentheses:
 const sayHello = name => console.log(`Hello ${name}`)
 ```
 
-If there is **no parameters** at all, you still need to put the parentheses before the arrow of the function:
+If there is **no parameter** at all, you still need to put the parentheses before the arrow of the function:
 
 ```sh
 const welcomeToBulgaria = () => console.log("Hi there, welcome to Bulgaria!")
