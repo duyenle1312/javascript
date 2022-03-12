@@ -8,14 +8,14 @@ At the end of this article, you will learn three main ideas:
 3. Examples of arrow functions and different use cases
 
 ## 1. Introduction
-First, let's have a look at the way we declare functions in Javascript ES5:
+First, let's have a look at the way we usually create a function in Javascript ES5:
 
 ```sh
 function findMax(a,b) {
     return a > b ? a : b;
 }
 // Or
-var findMax = function (a,b) {
+let findMax = function (a,b) {
     return a > b ? a : b;
 }
 ```
@@ -54,18 +54,18 @@ If there is only **one parameter**, you could also remove the parentheses:
 const sayHello = name => console.log(`Hello ${name}`)
 ```
 
-If there is **no parameters** at all, you still need to put the parantheses before the arrow:
+If there is **no parameters** at all, you still need to put the parentheses before the arrow of the function:
 
 ```sh
-const welcomeToBulgaria = () => console.log("Hi there, Welcome to Bulgaria!")
+const welcomeToBulgaria = () => console.log("Hi there, welcome to Bulgaria!")
 ```
 
-Now let's see how we can use the arrow functions to **calculate and return values**.
+Now let's see how we can use the arrow functions to **calculate and return a value**:
 
 ```sh
 const add = (a, b) => a + b;
 let sum = add(13, 12);
-console.log(sum); // This will print 25 (12+13) to the console
+console.log(sum); // This will print 25 (12 + 13) to the console
 ```
 
 You can also **return anything else such as an array, or an object** similarly to a normal function. For example, let's return an object from all the arguments:
@@ -88,5 +88,3 @@ console.log(doubleArray); // [1, 4, 9]
 ```
 
 Here we can see there is an arrow function inside the parantheses of the **_map()_**  function. If you look closely, you could see that this arrow function has _removed the brackets, the **_return_** keyword and also the parentheses_ as we have discussed above. This **_map()_** function just simply take each element of an array and return a new array based on the content of the inside arrow function body. 
-
-## 3. Special Usages
