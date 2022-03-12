@@ -87,4 +87,4 @@ const doubleArray = arr.map(element => element ** 2);
 console.log(doubleArray); // [1, 4, 9]
 ```
 
-Here we can see there is an arrow function inside the parentheses of the **_map()_**  function. If you look closely, you could see that this arrow function has _removed the brackets, the **_return_** keyword and also the parentheses_ as we have discussed above. If you are not familiar with the **_map()_** function, it is just simply take each element of an array and return a new array based on the content of the body of the arrow function inside it. 
+Here we can see there is an arrow function inside the parentheses of the **_map()_**  function. If you look closely, you could see that this arrow function has _removed the brackets, the **_return_** keyword and also the parentheses_ as we have discussed above. If you are not familiar with the **_map()_** function, it just simply takes each element of an array and return a new array based on the content of the arrow function body. 
