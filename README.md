@@ -88,3 +88,97 @@ console.log(doubleArray); // [1, 4, 9]
 ```
 
 Here we can see there is an arrow function inside the parentheses of the **_map()_**  function. If you look closely, you could see that this arrow function has _removed the brackets, the **_return_** keyword and also the parentheses_ as we have discussed above. If you are not familiar with the **_map()_** function, it just simply takes each element of an array and return a new array based on the content of the arrow function body. 
+
+## 3. Disadvantages
+### Constructors
+Despite all the benefits, arrow functions could not satisfy all the use cases of a normal function in Javascript. For example, arrow functions could not be used to create constructors because they do not have their own bindings to the ```this``` or ```super``` keywords. 
+
+When you access ```this``` inside **an inner function (inside a method)**, this refers to the global object. For example,
+
+```sh
+const person = {
+    name : 'Jack',
+    age: 25,
+
+    // this inside method
+    // this refers to the object itself
+    greet() {
+        console.log(this);        // {name: "Jack", age ...}
+        console.log(this.age);  // 25
+
+        // inner function
+        function innerFunc() {
+        
+            // this refers to the global object
+            console.log(this);       // Window { ... }
+            console.log(this.age);    // undefined
+            
+        }
+
+        innerFunc();
+
+    }
+}
+
+person.greet();
+```
+Output:
+```sh
+{name: "Jack", age: 25, greet: ƒ}
+25
+Window { …}
+undefined
+```
+Here, ```this``` inside ```innerFunc()``` refers to the global object because ```innerFunc()``` is inside a method, ```this.age``` outside ```innerFunc()``` refers to the person object.
+
+**Arrow functions** do not have their own ```this```, usually, ```this``` in an arrow function refers to its parent scope object. For example,
+
+```sh
+const greet = {
+    name: 'Jack',
+
+    // method
+    sayHi () {
+        let hi = () => console.log(this.name);
+        hi();
+    }
+}
+
+greet.sayHi(); // Jack
+```
+
+Here, ```this.name``` inside the ```hi()``` function refers to **the greet object**.
+
+
+### Arguments Binding
+Regular functions have arguments binding. That's why when you pass arguments to a regular function, you can access them using the arguments keyword. For example,
+
+```sh
+let x = function () {
+    console.log(arguments);
+}
+x(4,6,7); // Arguments [4, 6, 7]
+```
+
+Arrow functions, however, do not have arguments binding. When you try to access an argument using the arrow function, it will give an error. For example,
+
+```sh
+let x = () => {
+    console.log(arguments);
+}
+
+x(4,6,7); // ReferenceError: Can't find variable: arguments
+```
+To solve this issue, you can use the spread syntax.
+
+```sh
+let x = (...n) => {
+    console.log(n);
+}
+
+x(4,6,7); // [4, 6, 7]
+```
+
+So that's the end of today topic about arrow functions, I hope you find something  interesting along the way that might be useful for your next project or job interview.
+
+Happy coding!
